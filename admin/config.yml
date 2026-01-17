@@ -2,15 +2,73 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "uploads"
-public_folder: "/uploads"
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
 
 collections:
-  - name: "pages"
-    label: "Страницы"
+  - name: "site"
+    label: "Настройки сайта"
     files:
-      - file: "index.html"
-        label: "Главная"
-        name: "home"
+      - name: "settings"
+        label: "Контакты и SEO"
+        file: "data/site.json"
+        format: "json"
         fields:
-          - { label: "HTML", name: "body", widget: "text" }
+          - { label: "Город", name: "city", widget: "string" }
+          - { label: "Название/бренд", name: "brand", widget: "string" }
+          - { label: "Домен (с https://)", name: "domain", widget: "string", required: false }
+          - label: "Контакты"
+            name: "contacts"
+            widget: "object"
+            fields:
+              - { label: "Телефон", name: "phone", widget: "string" }
+              - { label: "WhatsApp link", name: "whatsapp", widget: "string" }
+              - { label: "Telegram", name: "telegram", widget: "string" }
+              - { label: "VK", name: "vk", widget: "string" }
+              - { label: "Avito", name: "avito", widget: "string", required: false }
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Title по умолчанию", name: "defaultTitle", widget: "string" }
+              - { label: "Description по умолчанию", name: "defaultDescription", widget: "text" }
+              - { label: "OG картинка (путь)", name: "ogImage", widget: "string" }
+          - label: "Карта"
+            name: "map"
+            widget: "object"
+            fields:
+              - { label: "Центр lat", name: "centerLat", widget: "number" }
+              - { label: "Центр lng", name: "centerLng", widget: "number" }
+              - { label: "Zoom", name: "zoom", widget: "number", value_type: "int" }
+
+  - name: "apartments"
+    label: "Квартиры"
+    folder: "data/apartments"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - { label: "ID (уникальный)", name: "id", widget: "string" }
+      - { label: "Название", name: "title", widget: "string" }
+      - { label: "Район", name: "district", widget: "string" }
+      - { label: "Адрес/ориентир", name: "address", widget: "string", required: false }
+      - { label: "ЖК/комплекс", name: "complex", widget: "string", required: false }
+      - { label: "Тип", name: "type", widget: "select", options: ["studio","1k","2k","3k"] }
+      - { label: "Гостей", name: "guests", widget: "number", value_type: "int" }
+      - { label: "Спальные места", name: "beds", widget: "string", required: false }
+      - { label: "Площадь, м²", name: "area", widget: "number", required: false }
+      - { label: "Цена, ₽/сутки", name: "price", widget: "number", value_type: "int" }
+      - { label: "Бейджи", name: "badges", widget: "list", required: false }
+      - { label: "Удобства", name: "amenities", widget: "list", required: false }
+      - { label: "Правила", name: "rules", widget: "list", required: false }
+      - { label: "Описание", name: "description", widget: "text" }
+      - label: "Фото"
+        name: "photos"
+        widget: "list"
+        field: { label: "Фото", name: "image", widget: "image" }
+      - { label: "Check-in", name: "checkin", widget: "string", required: false }
+      - { label: "Check-out", name: "checkout", widget: "string", required: false }
+      - { label: "Залог", name: "deposit", widget: "string", required: false }
+      - { label: "Широта (lat)", name: "lat", widget: "number" }
+      - { label: "Долгота (lng)", name: "lng", widget: "number" }
