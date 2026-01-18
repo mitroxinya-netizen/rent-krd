@@ -1,0 +1,22 @@
+{
+  "city": "Краснодар",
+  "brand": "Квартиры посуточно",
+  "domain": "",
+  "contacts": {
+    "phone": "+79184417070",
+    "whatsapp": "https://wa.me/79184417070",
+    "telegram": "https://t.me/krdkrdkrasnodar",
+    "vk": "https://vk.ru/foxredfox",
+    "avito": "https://www.avito.ru/brands/i4864267?src=sharing"
+  },
+  "seo": {
+    "defaultTitle": "Квартиры посуточно в Краснодаре — фото, цены, карта, бронирование",
+    "defaultDescription": "Аренда квартир посуточно в Краснодаре: реальные фото, цены за сутки, расположение на карте. Бронирование в Telegram/VK/WhatsApp или по телефону.",
+    "ogImage": "/assets/og.jpg"
+  },
+  "map": {
+    "centerLat": 45.03547,
+    "centerLng": 38.97531,
+    "zoom": 12
+  }
+}
